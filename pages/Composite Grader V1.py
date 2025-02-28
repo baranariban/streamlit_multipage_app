@@ -116,8 +116,3 @@ if st.button("Add Column"):
     st.session_state.data = pd.concat([st.session_state.data, new_row], ignore_index=True)
 
 st.write(st.session_state.data.T)
-st.bar_chart(
-    total_grade,
-    horizontal="True",
-    height=800,
-)
