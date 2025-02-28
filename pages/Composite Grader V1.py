@@ -117,7 +117,7 @@ st.write("The individual and total grades are given below.")
 if st.button("Add Entry"):
     # Store raw grades in one table
     new_grades_entry = {
-        "Name of the Composite": name,
+        "Type of the Composite": composite,
         "IFSS Grade": ifss_grade,
         "CTE Grade": cte_grade,
         "Tg Grade": tg_grade,
@@ -128,7 +128,7 @@ if st.button("Add Entry"):
         "Density Grade": density_grade,
         "Total Grade": total_grade
     }
-    st.session_state.grades_data[composite] = pd.Series(new_grades_entry)
+    st.session_state.grades_data[name] = pd.Series(new_grades_entry)
 
     # Store weighted contributions separately for the chart
     new_contributions_entry = {
@@ -141,7 +141,7 @@ if st.button("Add Entry"):
         "Shrinkage Contribution": shrinkage_contribution/3,
         "Density Contribution": density_contribution/3
     }
-    st.session_state.contributions_data[composite] = pd.Series(new_contributions_entry)
+    st.session_state.contributions_data[name] = pd.Series(new_contributions_entry)
 
 # Display the Table of Grades
 st.write("### Composite Property Grades")
@@ -149,12 +149,12 @@ st.write(st.session_state.grades_data)
 
 # Display the Chart of Contributions
 if not st.session_state.contributions_data.empty:
-    chart_data = st.session_state.contributions_data.reset_index().melt(id_vars="index", var_name="Composite", value_name="Contribution")
+    chart_data = st.session_state.contributions_data.reset_index().melt(id_vars="index", var_name="Name", value_name="Contribution")
     chart = alt.Chart(chart_data).mark_bar().encode(
-        x="Composite:N",
+        x="Name:N",
         y="Contribution:Q",
         color="index:N",
-        tooltip=["Composite", "index", "Contribution"]
+        tooltip=["Name", "index", "Contribution"]
     ).properties(
         width=800,
         height=500,
