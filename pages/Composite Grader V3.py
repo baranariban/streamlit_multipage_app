@@ -15,7 +15,7 @@ st.write("Write the thermal and physical properties of the composite below. For 
 if "data" not in st.session_state:
     st.session_state.data = pd.DataFrame(columns=["Type of the composite", "Interfacial Properties with Carbon Fiber Grade", "Coefficient of Thermal Expansion Grade", "Glass Transition Temperature Grade", "Cost Grade", "Strength Grade", "Processing Temperature Grade", "Shrinkage Grade", "Density Grade", "Total Grade"])
 
-composite = st.text_input("Type of the composite (UNFILLED, GF, CF, MINERAL, CONDUCTIVE): ")
+composite = st.selectbox('Type of the composite (UNFILLED, GF, CF, MINERAL, CONDUCTIVE): ', ['UNFILLED','GF','CF','MINERAL','CONDUCTIVE'])
 col1, col2, col3 = st.columns(3)
 with col1:
     ifss = st.number_input("Interfacial Properties with Carbon Fiber (IFSS, in MPa): ")
