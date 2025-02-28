@@ -11,10 +11,10 @@ selection = st.sidebar.radio("Go to", ["Composite Grader V1", "Composite Grader 
 st.title(f"Welcome, {st.session_state['username']}!")
 
 if selection == "Composite Grader V1":
-    st.switch_page("pages/Option1.py")
+    st.switch_page("pages/Composite Grader V1.py")
 elif selection == "Composite Grader V2":
-    st.switch_page("pages/Option2.py")
+    st.switch_page("pages/Composite Grader V2.py")
 elif selection == "Composite Grader V3":
-    st.switch_page("pages/Option3.py")
+    st.switch_page("pages/Composite Grader V3.py")
 elif selection == "Composite Selector":
-    st.switch_page("pages/Option4.py")
+    st.switch_page("pages/Composite Selector.py")
