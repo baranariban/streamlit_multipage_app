@@ -19,7 +19,7 @@ if "contributions_data" not in st.session_state:
     st.session_state.contributions_data = pd.DataFrame()
 
 name = st.text_input("Name of the polymer/composite: ")
-composite = st.text_input("Type of the composite (UNFILLED, GF, CF, MINERAL, CONDUCTIVE): ")
+composite = st.selectbox('Type of the composite (UNFILLED, GF, CF, MINERAL, CONDUCTIVE): ', ['UNFILLED','GF','CF','MINERAL','CONDUCTIVE'])
 ifss = st.number_input("Interfacial Properties with Carbon Fiber (IFSS, in MPa): ")
 cte = st.number_input("Coefficient of Thermal Expansion (CTE, in microstrain/°C): ")
 tg = st.number_input("Glass Transition Temperature (Tg, in °C): ")
