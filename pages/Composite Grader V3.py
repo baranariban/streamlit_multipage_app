@@ -16,7 +16,10 @@ if "data" not in st.session_state:
     st.session_state.data = pd.DataFrame(columns=["Type of the composite", "Interfacial Properties with Carbon Fiber Grade", "Coefficient of Thermal Expansion Grade", "Glass Transition Temperature Grade", "Cost Grade", "Strength Grade", "Processing Temperature Grade", "Shrinkage Grade", "Density Grade", "Total Grade"])
 
 composite = st.selectbox('Type of the composite (UNFILLED, GF, CF, MINERAL, CONDUCTIVE): ', ['UNFILLED','GF','CF','MINERAL','CONDUCTIVE'])
-col1, col2, col3 = st.columns(3)
+col1, col2, col3 = st.columns(
+    3,
+    vertical_alignment="top",
+)
 with col1:
     ifss = st.number_input("Interfacial Properties with Carbon Fiber (IFSS, in MPa): ")
 with col2:
@@ -24,7 +27,10 @@ with col2:
 with col3:
     ifss_max = st.number_input("Maximum IFSS in your data set (IFSS, in MPa): ")
 
-col4, col5, col6 = st.columns(3)
+col4, col5, col6 = st.columns(
+    3,
+    vertical_alignment="top",
+)
 with col4:
     cte = st.number_input("Coefficient of Thermal Expansion (CTE, in microstrain/°C): ")
 with col5:
@@ -32,7 +38,10 @@ with col5:
 with col6:
     cte_max = st.number_input("Maximum CTE in your data set (CTE, in microstrain/°C): ")
 
-col7, col8, col9 = st.columns(3)
+col7, col8, col9 = st.columns(
+    3,
+    vertical_alignment="top",
+)
 with col7:
     tg = st.number_input("Glass Transition Temperature (Tg, in °C): ")
 with col8:
@@ -40,7 +49,10 @@ with col8:
 with col9:
     tg_optimum = st.number_input("Optimum Glass Transition Temperature for your data set (Tg, in °C): ")
 
-col10, col11, col12 = st.columns(3)
+col10, col11, col12 = st.columns(
+    3,
+    vertical_alignment="top",
+)
 with col10:
     cost = st.number_input("Cost (in USD/kg): ")
 with col11:
@@ -48,7 +60,10 @@ with col11:
 with col12:
     cost_max = st.number_input("Maximum Cost in your data set (in USD/kg): ")
 
-col13, col14, col15 = st.columns(3)
+col13, col14, col15 = st.columns(
+    3,
+    vertical_alignment="top",
+)
 with col13:
     strength = st.number_input("Strength (Tensile Modulus or Flexural Modulus, in GPa): ")
 with col14:
@@ -56,7 +71,10 @@ with col14:
 with col15:
     strength_max = st.number_input("Maximum Strength in your data set (Tensile Modulus or Flexural Modulus, in GPa): ")
 
-col16, col17, col18, col19 = st.columns(4)
+col16, col17, col18, col19 = st.columns(
+    4,
+    vertical_alignment="top",
+)
 with col16:
     tp = st.number_input("Processing Temperature (Tp, in °C): ")
 with col17:
@@ -66,7 +84,10 @@ with col18:
 with col19:
     tp_max = st.number_input("Maximum Processing Temperature in your data set (Tp, in °C): ")
 
-col20, col21, col22, col23 = st.columns(4)
+col20, col21, col22, col23 = st.columns(
+    4,
+    vertical_alignment="top",
+)
 with col20:
     shrinkage = st.number_input("Shrinkage (in %): ")
 with col21:
@@ -76,7 +97,10 @@ with col22:
 with col23:
     shrinkage_max = st.number_input("Maximum Acceptable Shrinkage for your data set (in %): ")
 
-col24, col25, col26, col27, col28 = st.columns(5)
+col24, col25, col26, col27, col28 = st.columns(
+    5,
+    vertical_alignment="top",
+)
 with col24:
     density = st.number_input("Density (in kg/m^3): ")
 with col25:
