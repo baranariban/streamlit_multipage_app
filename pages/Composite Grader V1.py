@@ -115,17 +115,5 @@ if st.button("Add Column"):
     "Total Grade": [total_grade]
 })
     st.session_state.data = pd.concat([st.session_state.data, new_row], ignore_index=True)
-    st.session_state.data = st.session_state.data.sort_values(by="Total Grade", ascending=False)
-    st.rerun()
 
-st.write("### Composite Data Table")
 st.write(st.session_state.data.T)
-
-if not st.session_state.data.empty:
-    fig, ax = plt.subplots(figsize=(8,6))
-    ax.bar(st.session_state.data["Type of the composite"], st.session_state.data["Total Grade"], color="blue")
-    ax.set_xlabel("Type of the composite")
-    ax.set_ylabel("Total Grade")
-    ax.set_title("Total Grade Comparison")
-    ax.set_xticklabels(st.session_state.data["Type of the composite"], rotation=30, ha="right")
-    st.pyplot(fig, clear_figure=True)
