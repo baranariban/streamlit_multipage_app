@@ -3,11 +3,11 @@ import streamlit as st
 # Dummy user credentials (Replace with a real authentication system)
 USER_CREDENTIALS = {"bariban": "0v6260", "gunaydin": "0v6260"}
 
-st.title("CompApp - Composite Application")
+st.title("CompApp: Composite Application")
 st.markdown("### :red[by Ali Baran Arıban]")
 
 def login():
-    st.title("CompApp Login Page")
+    st.title("Login Page")
     username = st.text_input("Username")
     password = st.text_input("Password", type="password", key="password_input")
     
