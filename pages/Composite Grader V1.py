@@ -1,6 +1,5 @@
 import streamlit as st
 import pandas as pd
-import matplotlib.pyplot as plt
 
 # Prevent unauthorized access
 if "authenticated" not in st.session_state or not st.session_state["authenticated"]:
@@ -117,3 +116,8 @@ if st.button("Add Column"):
     st.session_state.data = pd.concat([st.session_state.data, new_row], ignore_index=True)
 
 st.write(st.session_state.data.T)
+st.bar_chart(
+    total_grade,
+    horizontal="True",
+    height=800,
+)
