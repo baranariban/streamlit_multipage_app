@@ -1,11 +1,11 @@
 import streamlit as st
+import pandas as pd
+import matplotlib.pyplot as plt
 
 # Prevent unauthorized access
 if "authenticated" not in st.session_state or not st.session_state["authenticated"]:
     st.error("Unauthorized access. Please log in.")
     st.stop()
-
-import pandas as pd
 
 st.title("CompApp: Composite Application")
 st.markdown("### :red[by Ali Baran Arıban]")
@@ -116,4 +116,15 @@ if st.button("Add Column"):
 })
     st.session_state.data = pd.concat([st.session_state.data, new_row], ignore_index=True)
 
+st.write("### Composite Data Table")
 st.write(st.session_state.data.T)
+
+if not st.session_state.data.empty:
+    df_sorted = st.session_state.data.sort_values(by="Total Grade", ascending=False)
+    fig, ax = plt.subplots(figsize=(8,6))
+    ax.bar(df_sorted["Type of the composite"], df_sorted["Total Grade"], color="blue")
+    ax.set_xlabel("Type of the composite")
+    ax.set_ylabel("Total Grade")
+    ax.set_title("Total Grade Comparison")
+    ax.set_xticklabels(df_sorted["Type of the composite"], rotation=45, ha="right")
+    st.pyplot(fig)
