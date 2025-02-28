@@ -7,7 +7,7 @@ if "authenticated" not in st.session_state or not st.session_state["authenticate
 
 import pandas as pd
 
-st.title("CompApp - Composite Application")
+st.title("CompApp: Composite Application")
 st.markdown("### :red[by Ali Baran Arıban]")
 st.title("Composite Grader Version 2.0")
 st.write("Write the thermal and physical properties of the composite below. For each property, also write the weighing. The application will provide you a grade out of 3 and a total grade out of 100.") 
