@@ -126,5 +126,6 @@ if not st.session_state.data.empty:
     ax.set_xlabel("Type of the composite")
     ax.set_ylabel("Total Grade")
     ax.set_title("Total Grade Comparison")
+    ax.set_xticks(range(len(df_sorted["Type of the composite"])))
     ax.set_xticklabels(df_sorted["Type of the composite"], rotation=45, ha="right")
     st.pyplot(fig)
