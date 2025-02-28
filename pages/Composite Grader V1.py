@@ -18,6 +18,7 @@ if "grades_data" not in st.session_state:
 if "contributions_data" not in st.session_state:
     st.session_state.contributions_data = pd.DataFrame()
 
+name = st.text_input("Name of the polymer/composite: ")
 composite = st.selectbox('Type of the composite (UNFILLED, GF, CF, MINERAL, CONDUCTIVE): ', ['UNFILLED','GF','CF','MINERAL','CONDUCTIVE'])
 ifss = st.number_input("Interfacial Properties with Carbon Fiber (IFSS, in MPa): ")
 cte = st.number_input("Coefficient of Thermal Expansion (CTE, in microstrain/°C): ")
@@ -116,7 +117,7 @@ st.write("The individual and total grades are given below.")
 if st.button("Add Entry"):
     # Store raw grades in one table
     new_grades_entry = {
-        "Type of the Composite": [composite],
+        "Name of the Composite": [name],
         "IFSS Grade": ifss_grade,
         "CTE Grade": cte_grade,
         "Tg Grade": tg_grade,
@@ -131,14 +132,14 @@ if st.button("Add Entry"):
 
     # Store weighted contributions separately for the chart
     new_contributions_entry = {
-        "IFSS Contribution": ifss_contribution,
-        "CTE Contribution": cte_contribution,
-        "Tg Contribution": tg_contribution,
-        "Cost Contribution": cost_contribution,
-        "Strength Contribution": strength_contribution,
-        "Tp Contribution": tp_contribution,
-        "Shrinkage Contribution": shrinkage_contribution,
-        "Density Contribution": density_contribution
+        "IFSS Contribution": ifss_contribution/3,
+        "CTE Contribution": cte_contribution/3,
+        "Tg Contribution": tg_contribution/3,
+        "Cost Contribution": cost_contribution/3,
+        "Strength Contribution": strength_contribution/3,
+        "Tp Contribution": tp_contribution/3,
+        "Shrinkage Contribution": shrinkage_contribution/3,
+        "Density Contribution": density_contribution/3
     }
     st.session_state.contributions_data[composite] = pd.Series(new_contributions_entry)
 
