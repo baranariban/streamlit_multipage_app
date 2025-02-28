@@ -19,7 +19,7 @@ if "contributions_data" not in st.session_state:
     st.session_state.contributions_data = pd.DataFrame()
 
 name = st.text_input("Name of the polymer/composite: ")
-composite = st.selectbox('Type of the composite (UNFILLED, GF, CF, MINERAL, CONDUCTIVE): ', ['UNFILLED','GF','CF','MINERAL','CONDUCTIVE'])
+composite = st.text_input("Type of the composite (UNFILLED, GF, CF, MINERAL, CONDUCTIVE): ")
 ifss = st.number_input("Interfacial Properties with Carbon Fiber (IFSS, in MPa): ")
 cte = st.number_input("Coefficient of Thermal Expansion (CTE, in microstrain/°C): ")
 tg = st.number_input("Glass Transition Temperature (Tg, in °C): ")
@@ -117,7 +117,7 @@ st.write("The individual and total grades are given below.")
 if st.button("Add Entry"):
     # Store raw grades in one table
     new_grades_entry = {
-        "Name of the Composite": [name],
+        "Name of the Composite": name,
         "IFSS Grade": ifss_grade,
         "CTE Grade": cte_grade,
         "Tg Grade": tg_grade,
