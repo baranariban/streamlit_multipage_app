@@ -116,7 +116,7 @@ if st.button("Add Column"):
 })
     st.session_state.data = pd.concat([st.session_state.data, new_row], ignore_index=True)
     st.session_state.data = st.session_state.data.sort_values(by="Total Grade", ascending=False)
-    st.experimental_rerun()
+    st.rerun()
 
 st.write("### Composite Data Table")
 st.write(st.session_state.data.T)
