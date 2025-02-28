@@ -128,4 +128,4 @@ if not st.session_state.data.empty:
     ax.set_ylabel("Total Grade")
     ax.set_title("Total Grade Comparison")
     ax.set_xticklabels(st.session_state.data["Type of the composite"], rotation=30, ha="right")
-    st.pyplot(fig)
+    st.pyplot(fig, clear_figure=True)
