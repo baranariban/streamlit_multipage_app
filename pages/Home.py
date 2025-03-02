@@ -5,10 +5,8 @@ if "authenticated" not in st.session_state or not st.session_state["authenticate
     st.error("Unauthorized access. Please log in.")
     st.stop()  # Stop execution if not logged in
 
-st.sidebar.title("Navigation")
-selection = st.sidebar.radio("Go to", ["Composite Grader V1", "Composite Grader V2", "Composite Grader V3", "Composite Selector"])
-
 st.title(f"Welcome, {st.session_state['username']}!")
+selection = st.radio("Go to", ["Composite Grader V1", "Composite Grader V2", "Composite Grader V3", "Composite Selector"])
 
 if selection == "Composite Grader V1":
     st.switch_page("pages/Composite Grader V1.py")
