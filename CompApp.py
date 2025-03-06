@@ -1,7 +1,7 @@
 import streamlit as st
 
 # Dummy user credentials (Replace with a real authentication system)
-USER_CREDENTIALS = {"bariban": "0v6260", "gunaydin": "0v6260"}
+USER_CREDENTIALS = {"bariban": "0v6260", "gunaydin": "0v6260", "zegeuysal": "0v6260", "sertacaltinok": "0v6260"}
 
 st.title("CompApp: Composite Application")
 st.markdown("### :red[by Ali Baran Arıban]")
