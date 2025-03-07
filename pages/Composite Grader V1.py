@@ -30,27 +30,27 @@ shrinkage = st.number_input("Shrinkage (in %): ")
 density = st.number_input("Density (in kg/m^3): ")
 
 if ifss>=100:
-    ifss_grade = 3.00
+    ifss_grade = 1.00
 else:
-    ifss_grade = 3.00 - 3.00*((100-ifss)/100)
+    ifss_grade = 1.00 - 1.00*((100-ifss)/100)
     ifss_grade = round(ifss_grade,2)
 
 if composite in ["UNFILLED", "CF", "MINERAL", "CONDUCTIVE"]:
     if cte == 7.5:
-        cte_grade = 3.00
+        cte_grade = 1.00
     elif 0 < cte < 7.5:
-        cte_grade = round(3.00 - 3.00 * ((7.5 - cte) / 7.5), 2)
+        cte_grade = round(1.00 - 1.00 * ((7.5 - cte) / 7.5), 2)
     elif 7.5 < cte < 144:
-        cte_grade = round(3.00 - 3.00 * ((cte - 7.5) / (144 - 7.5)), 2)
+        cte_grade = round(1.00 - 1.00 * ((cte - 7.5) / (144 - 7.5)), 2)
     else:
         cte_grade = 0     
 elif composite == "GF":  
     if cte == 22.5:
-        cte_grade = 3.00
+        cte_grade = 1.00
     elif 0 < cte < 22.5:
-        cte_grade = round(3.00 - 3.00 * ((22.5 - cte) / 22.5), 2)
+        cte_grade = round(1.00 - 1.00 * ((22.5 - cte) / 22.5), 2)
     elif 22.5 < cte < 40:
-        cte_grade = round(3.00 - 3.00 * ((cte - 22.5) / (40 - 22.5)), 2)
+        cte_grade = round(1.00 - 1.00 * ((cte - 22.5) / (40 - 22.5)), 2)
     else:
         cte_grade = 0
 else:
@@ -59,43 +59,43 @@ else:
 if tg<180:
     tg_grade = 0
 elif tg>=180:
-    tg_grade = 3.00
+    tg_grade = 1.00
 
 if cost>=117.5:
     cost_grade = 0
 else:
-    cost_grade = 3.00 - 3.00*((0-cost)/(0-117.5))
+    cost_grade = 1.00 - 1.00*((0-cost)/(0-117.5))
     cost_grade = round(cost_grade,2)
 
 if strength>=18:
-    strength_grade = 3.00
+    strength_grade = .00
 else:
-    strength_grade = 3.00 - 3.00*((18-strength)/(18-0))
+    strength_grade = 1.00 - 1.00*((18-strength)/(18-0))
     strength_grade = round(strength_grade,2)
 
 if tp<=119.5:
-    tp_grade = 3.00
+    tp_grade = 1.00
 elif tp>=400:
     tp_grade = 0
 else:
-    tp_grade = 3.00 - 3.00*((119.5-tp)/(119.5-400))
+    tp_grade = 1.00 - 1.00*((119.5-tp)/(119.5-400))
     tp_grade = round(tp_grade,2)
 
 if shrinkage<=0.5:
-    shrinkage_grade = 3.00
+    shrinkage_grade = 1.00
 elif shrinkage>=1.5:
     shrinkage_grade = 0
 else:
-    shrinkage_grade = 3.00 - 3.00*((0.5-shrinkage)/(0.5-1.5))
+    shrinkage_grade = 1.00 - 1.00*((0.5-shrinkage)/(0.5-1.5))
     shrinkage_grade = round(shrinkage_grade,2)
 
 if density == 1400:
-    density_grade = 3.00
+    density_grade = 1.00
 elif 1000 < density < 1400:
-    density_grade = 3.00 - 3.00*((1400-density)/(1400-1000))
+    density_grade = 1.00 - 1.00*((1400-density)/(1400-1000))
     density_grade = round(density_grade,2)
 elif 2000 > density > 1400:
-    density_grade = 3.00 - 3.00*((1400-density)/(1400-2000))
+    density_grade = 1.00 - 1.00*((1400-density)/(1400-2000))
     density_grade = round(density_grade,2)
 else:
     density_grade = 0
@@ -110,7 +110,7 @@ shrinkage_contribution = shrinkage_grade * 5
 density_contribution = density_grade * 5
 
 total_grade = (ifss_contribution + cte_contribution + tg_contribution + cost_contribution +
-                     strength_contribution + tp_contribution + shrinkage_contribution + density_contribution)/3.00
+                     strength_contribution + tp_contribution + shrinkage_contribution + density_contribution)
 total_grade = round(total_grade,2)
 
 st.write("The individual and total grades are given below.")
@@ -132,14 +132,14 @@ if st.button("Add Entry"):
 
     # Store weighted contributions separately for the chart
     new_contributions_entry = {
-        "IFSS Contribution": ifss_contribution/3,
-        "CTE Contribution": cte_contribution/3,
-        "Tg Contribution": tg_contribution/3,
-        "Cost Contribution": cost_contribution/3,
-        "Strength Contribution": strength_contribution/3,
-        "Tp Contribution": tp_contribution/3,
-        "Shrinkage Contribution": shrinkage_contribution/3,
-        "Density Contribution": density_contribution/3
+        "IFSS Contribution": ifss_contribution,
+        "CTE Contribution": cte_contribution,
+        "Tg Contribution": tg_contribution,
+        "Cost Contribution": cost_contribution,
+        "Strength Contribution": strength_contribution,
+        "Tp Contribution": tp_contribution,
+        "Shrinkage Contribution": shrinkage_contribution,
+        "Density Contribution": density_contribution
     }
     st.session_state.contributions_data[name] = pd.Series(new_contributions_entry)
 
